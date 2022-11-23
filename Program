@@ -1,0 +1,37 @@
+namespace ConsoleApp9
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car1 = new Car("Merce");
+            car1.Speed = 100;
+            Car car2 = new Car("Volvo");
+            car2.Speed = 250;
+            Car car3 = new Car("Range Rover");
+            car3.Speed = 60;
+
+            Gallary gallary = new();
+
+            gallary.AddCar(car1);
+            gallary.AddCar(car2);
+            gallary.AddCar(car3);
+            
+
+            gallary.ShowAllCars();
+            Console.WriteLine("==========================");
+            Car WantedCar = gallary.FindCarById(3);
+            if(WantedCar != null)
+            {
+                Console.WriteLine(WantedCar.Id + " " + WantedCar.Name);
+            }
+            else
+            {
+                Console.WriteLine("Bele id yoxdur");
+            }
+            Console.WriteLine("==========================");
+            Car[] wantedCar2=
+
+        }
+    }
+}
