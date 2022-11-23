@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp9
+{
+    internal class Gallary
+    {
+        public Car[] Cars = new Car[0];
+        public void AddCar(Car car)
+        {
+            Array.Resize(ref Cars, Cars.Length + 1);
+            Cars[^1] = car;
+        }
+        public void AddCar(ref Car[] carArray,Car car)
+        {
+            Array.Resize(ref carArray, carArray.Length + 1);
+            Cars[^1] = car;
+        }
+        public void AddCar(Car[] cars)
+        {
+            for(int i = 0; i < cars.Length; i++)
+            {
+                AddCar(cars[i]);
+            }
+        }
+        public void ShowAllCars()
+        {
+
+            foreach(Car car in Cars)
+            {
+                Console.WriteLine($"{car.Id} {car.Name} {car.CarCode} {car.Speed}");
+            }
+
+        }
+        public Car[] GetAllCars()
+        {
+            return Cars;
+        }
+        public Car FindCarById(int id)
+        {
+            for (int i = 0; i < Cars.Length; i++)
+            {
+                {
+                    if (Cars[i].Id == id)
+                    {
+                        return Cars[i];
+                    }
+                }
+            }
+            return null;
+        }
+        public Car FindCarByCarCode(string carCode)
+        {
+
+            for (int i = 0; i < Cars.Length; i++)
+            {
+               
+                    if (Cars[i].CarCode == carCode)
+                    {
+                        return Cars[i];
+                    }
+                
+            }
+            return null;
+        }
+        public Car[] GetFilteredCars(double minSpeed, int maxSpeed)
+        {
+            Car[] GetFilteredCars = Array.Empty<Car>();
+            for (int i = 0; i < Cars.Length; i++)
+            {
+                if (Cars[i].Speed <= maxSpeed && Cars[i].Speed >= minSpeed)
+                {
+                    AddCar(ref GetFilteredCars, Cars[i]);
+                }
+            }
+            return GetFilteredCars;
+        }
