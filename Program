@@ -23,15 +23,37 @@ namespace ConsoleApp9
             Car WantedCar = gallary.FindCarById(3);
             if(WantedCar != null)
             {
-                Console.WriteLine(WantedCar.Id + " " + WantedCar.Name);
+                Console.WriteLine(WantedCar.Id + " " + WantedCar.Name+" "+WantedCar.CarCode);
             }
             else
             {
                 Console.WriteLine("Bele id yoxdur");
             }
             Console.WriteLine("==========================");
-            Car[] wantedCar2=
-
+            Car wantedCars2 = gallary.FindCarByCarCode("ME1001");
+            if (wantedCars2 != null)
+            {
+                Console.WriteLine(wantedCars2.Id + " " + wantedCars2.Name);
+            }
+            else
+            {
+                Console.WriteLine("Bele code yoxdur");
+            }
+            Console.WriteLine("==========================");
+            Car[] wantedCars = gallary.GetFilteredCars(100, 200);
+            
+            if(wantedCars.Length > 0)
+            {
+                foreach (Car car in wantedCars)
+                {
+                    Console.WriteLine(wantedCars2.Id + " " + wantedCars2.Name + " " + wantedCars2.Speed);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Bu intervalda suret yoxdur");
+            }
+            Console.WriteLine("==========================");
         }
     }
 }
